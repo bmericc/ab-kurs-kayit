@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import sys
+import logging
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(BASE_DIR, "abkayit"))
@@ -19,7 +20,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, "abkayit"))
 '''
     COMMON_CONFIG_FILE: Veri tabani ayarlari ve secret key bu dosyada yer alir.
 '''
-COMMON_CONFIG_FILE = '/opt/kampyazilim.conf'
+COMMON_CONFIG_FILE = '/home/bmericc/Dropbox/ab-kurs-kayit/abkayit/abkayit.settings'
 from readconf import *
 
 '''
@@ -236,10 +237,6 @@ LOGGING = {
         },
     },
     'handlers': {
-        'null': {
-            'level': 'DEBUG',
-            'class': 'django.utils.log.NullHandler',
-        },
         'logfile': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',

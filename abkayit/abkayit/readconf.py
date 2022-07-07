@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-import ConfigParser
+try:
+    import configparser
+except:
+    from six.moves import configparser
+
 from abkayit.settings import COMMON_CONFIG_FILE
 
 
@@ -11,7 +15,7 @@ class DBconfig:
     dbpass = None
 
     def __init__(self):
-        config = ConfigParser.ConfigParser()
+        config = configparser.ConfigParser()
         config.read(COMMON_CONFIG_FILE)
         section = "DB"
         self.dbhost = config.get(section, "host")
@@ -44,7 +48,7 @@ class LDAPconfig:
     searchdn = None
 
     def __init__(self):
-        config = ConfigParser.ConfigParser()
+        config = configparser.ConfigParser()
         config.read(COMMON_CONFIG_FILE)
         section = "LDAP"
         self.ldaphost = config.get(section, "host")
@@ -73,7 +77,7 @@ class DjangoSettings:
     secret_key = None
 
     def __init__(self):
-        config = ConfigParser.ConfigParser()
+        config = configparser.ConfigParser()
         config.read(COMMON_CONFIG_FILE)
         section = "DJANGO"
         self.secret_key = config.get(section, "secret_key")
@@ -88,7 +92,7 @@ class EmailSettings:
     port = None
 
     def __init__(self):
-        config = ConfigParser.ConfigParser()
+        config = configparser.ConfigParser()
         config.read(COMMON_CONFIG_FILE)
         section = "EMAIL"
         self.fromaddress = config.get(section, "from")
@@ -103,7 +107,7 @@ class SMSSettings:
     msgheader = None
 
     def __init__(self):
-        config = ConfigParser.ConfigParser()
+        config = configparser.ConfigParser()
         config.read(COMMON_CONFIG_FILE)
         section = "SMS"
         self.url = config.get(section, "url")
@@ -129,7 +133,7 @@ class CaptchaSettings:
     privatekey = None
 
     def __init__(self):
-        config = ConfigParser.ConfigParser()
+        config = configparser.ConfigParser()
         config.read(COMMON_CONFIG_FILE)
         section = "CAPTCHA"
         self.publickey = config.get(section, 'publickey')
